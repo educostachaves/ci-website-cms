@@ -16,7 +16,7 @@
 | environments.
 |
 */
-$config['base_url'] = 'http://localhost/andre-dourado';
+$config['base_url'] = 'http://localhost/ci-website-cms';
 
 /*
 |--------------------------------------------------------------------------
