@@ -1,0 +1,31 @@
+{
+  "name": "Andre-Dourado",
+  "version": "1.0.0",
+  "description": "KeyTecnologia WebSite",
+  "main": "gruntfile.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eduardo Chaves",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/educostachaves/andre-dourado.git"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cache-bust": "^0.5.1",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-compass": "^1.0.3",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-cssmin": "^0.13.0",
+    "grunt-contrib-uglify": "^0.6.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-csscomb": "^3.1.0",
+    "grunt-tinyimg": "^1.0.0"
+  }
+}

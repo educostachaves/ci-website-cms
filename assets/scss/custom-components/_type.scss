@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Lato-Regular';
+  src: 	url($font-path + 'lato-regular.eot?#iefix') format('embedded-opentype'),
+  		url($font-path + 'lato-regular.woff') format('woff'),
+  		url($font-path + 'lato-regular.ttf')  format('truetype'),
+  		url($font-path + 'lato-regular.svg#Lato-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Omnes-Light';
+  src: 	url($font-path + 'omnes-light.eot?#iefix') format('embedded-opentype'),
+  		url($font-path + 'omnes-light.woff') format('woff'),
+  		url($font-path + 'omnes-light.ttf')  format('truetype'),
+  		url($font-path + 'omnes-light.svg#omnes_lightregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Omnes-Semibold';
+  src: 	url($font-path + 'omnes-semibold.eot?#iefix') format('embedded-opentype'),
+  		url($font-path + 'omnes-semibold.woff') format('woff'),
+  		url($font-path + 'omnes-semibold.ttf')  format('truetype'),
+  		url($font-path + 'omnes-semibold.svg#omnes_semiboldregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h4 {
+  margin: 25px 0 10px 0;
+  font-size: 26px;
+  font-weight: bold;
+}
