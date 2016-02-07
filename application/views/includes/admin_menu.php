@@ -96,6 +96,20 @@
         </li>
         <li>
           <a href="#">
+            <i class="fa fa-file-text fa-fw"></i> Paginas
+            <span class="fa arrow"></span>
+          </a>
+          <ul class="nav nav-second-level">
+            <li>
+              <a href="<?php echo base_url(); ?>admin/paginas/">Listar Páginas</a>
+            </li>
+            <li>
+              <a href="<?php echo base_url(); ?>admin/paginas/novo">Cadastrar Página</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
             <i class="fa fa-users fa-fw"></i> Usuários
             <span class="fa arrow"></span>
           </a>

@@ -71,6 +71,12 @@ $route['admin/linguagens/novo'] = 'linguagens/create';
 $route['admin/linguagens/editar/(:num)'] = 'linguagens/update/$1';
 $route['admin/linguagens/excluir/(:num)'] = 'linguagens/delete/$1';
 
+$route['admin/paginas'] = 'paginas/index';
+$route['admin/paginas/(:num)'] = 'paginas/index/$1';
+$route['admin/paginas/novo'] = 'paginas/create';
+$route['admin/paginas/editar/(:num)'] = 'paginas/update/$1';
+$route['admin/paginas/excluir/(:num)'] = 'paginas/delete/$1';
+
 $route['home'] = 'site/index';
 $route['novidades'] = 'site/novidades';
 $route['novidades/(:any)'] = 'site/novidade_url';
