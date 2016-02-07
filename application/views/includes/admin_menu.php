@@ -82,6 +82,20 @@
         </li>
         <li>
           <a href="#">
+            <i class="fa fa-flag fa-fw"></i> Linguagens
+            <span class="fa arrow"></span>
+          </a>
+          <ul class="nav nav-second-level">
+            <li>
+              <a href="<?php echo base_url(); ?>admin/linguagens/">Listar Linguagens</a>
+            </li>
+            <li>
+              <a href="<?php echo base_url(); ?>admin/linguagens/novo">Cadastrar Língua</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
             <i class="fa fa-users fa-fw"></i> Usuários
             <span class="fa arrow"></span>
           </a>

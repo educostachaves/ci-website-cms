@@ -22,6 +22,17 @@
       }
     ?>
     <div class="form-group">
+      <label>Língua</label>
+      <select name="lingua" class="form-control">
+        <option value="">Selecione uma opção</option>
+        <?php
+        foreach ($lista_linguagens as $linguagem) {
+          echo '<option value="'.$linguagem->id.'">'.$linguagem->titulo.'</option>';
+        }
+        ?>
+      </select>
+    </div>
+    <div class="form-group">
       <label>Título</label>
       <?php echo form_input('titulo', set_value('titulo'), 'class="form-control" placeholder="Digite o Título" maxlength="140"'); ?>
     </div>

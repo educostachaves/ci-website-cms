@@ -6,6 +6,7 @@ class Novidades extends CI_Controller {
   public function __construct() {
     parent::__construct();
     $this->load->model('Novidades_model');
+    $this->load->model('Linguagens_model');
     $this->load->library('pagination');
   }
 
@@ -46,6 +47,7 @@ class Novidades extends CI_Controller {
 		$this->pagination->initialize($config);
 
 		$data["paginacao"] =  $this->pagination->create_links();
+    $data["lista_linguagens"] = $this->Linguagens_model->get_all_linguagens();
 		$data["novidades"] = $this->Novidades_model->get_novidades($maximo,$inicio);
     $data['main_content'] = 'admin/novidades/list';
     $this->load->view('includes/admin_template', $data);
@@ -73,6 +75,7 @@ class Novidades extends CI_Controller {
           $file_data = $this->upload->data();
           $data_insert = array(
             'titulo' => $this->input->post('titulo'),
+            'lingua' => $this->input->post('lingua'),
             'imagem' => $file_data['file_name'],
             'descricao' => $this->input->post('descricao'),
             'autor' => $this->input->post('autor'),
@@ -89,6 +92,7 @@ class Novidades extends CI_Controller {
         }
       }
 		}
+    $data["lista_linguagens"] = $this->Linguagens_model->get_all_linguagens();
     $data['main_content'] = 'admin/novidades/create';
     $this->load->view('includes/admin_template', $data);
   }

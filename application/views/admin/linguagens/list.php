@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Novidades</h1>
+        <h1 class="page-header">Linguagens</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -21,7 +21,7 @@
     ?>
     <div class="panel panel-default">
       <div class="panel-heading">
-        Todas as Novidades listadas
+        Todas as Linguagens listadas
       </div>
       <!-- /.panel-heading -->
       <div class="panel-body">
@@ -29,35 +29,24 @@
           <table class="table table-striped table-bordered table-hover" id="dataTables-example">
             <thead>
               <tr>
-                <th class="col-md-4">Título</th>
-                <th class="col-md-2">Língua</th>
-                <th class="col-md-2">Data</th>
-                <th class="col-md-2">Autor</th>
+                <th class="col-md-7">Título</th>
+                <th class="col-md-3">Sigla</th>
                 <th class="col-md-2">Opções</th>
               </tr>
             </thead>
             <tbody>
               <?php
-              if (count($novidades) > 0 ) {
-    						foreach($novidades as $novidade) {
+              if (count($linguagens) > 0 ) {
+    						foreach($linguagens as $linguagem) {
     					?>
               <tr>
-                <td><?php echo $novidade->titulo; ?></td>
-                <td>
-                  <?php
-                  foreach ($lista_linguagens as $linguagem) {
-                    if ($novidade->lingua == $linguagem->id) {
-                      echo $linguagem->titulo;
-                    }
-                  }
-                  ?></td>
-                <td><?php echo date("d/m/Y", strtotime($novidade->data)); ?></td>
-                <td><?php echo $novidade->autor; ?></td>
+                <td><?php echo $linguagem->titulo; ?></td>
+                <td><?php echo $linguagem->sigla; ?></td>
                 <td class="center">
-                  <a href="<?php echo base_url();?>admin/novidades/editar/<?php echo $novidade->id; ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar">
+                  <a href="<?php echo base_url();?>admin/linguagens/editar/<?php echo $linguagem->id; ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar">
                     <i class="fa fa-pencil"></i>
                   </a>
-                  <a href="<?php echo base_url();?>admin/novidades/excluir/<?php echo $novidade->id; ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Excluir">
+                  <a href="<?php echo base_url();?>admin/linguagens/excluir/<?php echo $linguagem->id; ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Excluir">
                     <i class="fa fa-trash"></i>
                   </a>
                 </td>
