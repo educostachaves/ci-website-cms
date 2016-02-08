@@ -7,6 +7,10 @@ class Linguagens extends CI_Controller {
     parent::__construct();
     $this->load->model('Linguagens_model');
     $this->load->library('pagination');
+
+    if(!$this->session->userdata('is_logged_in')){
+      redirect('admin/login');
+    }
   }
 
   public function index() {

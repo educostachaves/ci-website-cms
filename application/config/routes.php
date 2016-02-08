@@ -76,6 +76,7 @@ $route['admin/galerias/(:num)'] = 'galerias/index/$1';
 $route['admin/galerias/novo'] = 'galerias/create';
 $route['admin/galerias/editar/(:num)'] = 'galerias/update/$1';
 $route['admin/galerias/excluir/(:num)'] = 'galerias/delete/$1';
+$route['admin/galerias/imagens/(:num)'] = 'galerias/list_images/$1';
 
 $route['home'] = 'site/index';
 $route['novidades'] = 'site/novidades';

@@ -8,6 +8,10 @@ class Novidades extends CI_Controller {
     $this->load->model('Novidades_model');
     $this->load->model('Linguagens_model');
     $this->load->library('pagination');
+
+    if(!$this->session->userdata('is_logged_in')){
+      redirect('admin/login');
+    }
   }
 
   public function index() {

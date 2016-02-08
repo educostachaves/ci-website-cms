@@ -38,14 +38,11 @@ class Galerias_model extends CI_Model {
 		return $query->result();
 	}
 
-	function get_imagem_by_id($id)	{
-		$this->db->select('imagem');
-		$this->db->where('id', $id);
-		$query = $this->db->get('galeria');
-		if ($query->num_rows() > 0) {
-		   $row = $query->row();
-		   return $row->imagem;
-		}
+	function get_imagens_by_galeria_id($id)	{
+		$this->db->select('*');
+		$this->db->where('galeria', $id);
+		$query = $this->db->get('galeria_imagem');
+		return $query->result();
 	}
 
 	function count_galerias() {

@@ -7,6 +7,10 @@ class Galerias extends CI_Controller {
     parent::__construct();
     $this->load->model('Galerias_model');
     $this->load->library('pagination');
+
+    if(!$this->session->userdata('is_logged_in')){
+      redirect('admin/login');
+    }
   }
 
   public function index() {
@@ -145,5 +149,13 @@ class Galerias extends CI_Controller {
 			$this->load->view('includes/admin_template', $data);
 		}
 	}
+
+  public function list_images() {
+    $id = $this->uri->segment(4);
+
+		$data["imagens"] = $this->Galerias_model->get_imagens_by_galeria_id($id);
+    $data['main_content'] = 'admin/galerias/list_images';
+    $this->load->view('includes/admin_template', $data);
+  }
 
 }
