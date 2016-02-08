@@ -45,6 +45,21 @@ class Galerias_model extends CI_Model {
 		return $query->result();
 	}
 
+	function get_galeria_titulo_by_id($id)	{
+		$this->db->select('titulo');
+		$this->db->where('id', $id);
+		$query = $this->db->get('galeria');
+		if ($query->num_rows() > 0) {
+		   $row = $query->row();
+		   return $row->titulo;
+		}
+	}
+
+	function insert_imagens($data)	{
+		$insert = $this->db->insert('galeria_imagem', $data);
+		return $insert;
+	}
+
 	function count_galerias() {
 		return $this->db->count_all_results('galeria');
 	}

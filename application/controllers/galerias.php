@@ -153,8 +153,65 @@ class Galerias extends CI_Controller {
   public function list_images() {
     $id = $this->uri->segment(4);
 
-		$data["imagens"] = $this->Galerias_model->get_imagens_by_galeria_id($id);
+    $data['titulo_galeria'] = $this->Galerias_model->get_galeria_titulo_by_id($id);
+		$data['imagens'] = $this->Galerias_model->get_imagens_by_galeria_id($id);
     $data['main_content'] = 'admin/galerias/list_images';
+    $this->load->view('includes/admin_template', $data);
+  }
+
+  public function add_images() {
+    $id = $this->uri->segment(5);
+    
+    $data['titulo_galeria'] = $this->Galerias_model->get_galeria_titulo_by_id($id);
+    $data['main_content'] = 'admin/galerias/add_images';
+    $this->load->view('includes/admin_template', $data);
+  }
+
+  function upload() {
+    $id = $this->uri->segment(5);
+
+    $name_array = array();
+    $count = count($_FILES['userfile']['size']);
+
+    foreach($_FILES as $key=>$value){
+      for($s = 0; $s <= $count - 1; $s++) {
+
+        $_FILES['userfile']['name'] = date('YmdHms').rand(000000,999999).'.'.end(explode('.', $value['name'][$s]));
+        $_FILES['userfile']['type'] = $value['type'][$s];
+        $_FILES['userfile']['tmp_name'] = $value['tmp_name'][$s];
+        $_FILES['userfile']['error'] = $value['error'][$s];
+        $_FILES['userfile']['size'] = $value['size'][$s];
+
+        $config = array(
+          'upload_path' => "./uploads/",
+          'allowed_types' => "jpg|png|jpeg",
+          'overwrite' => TRUE,
+          'max_size' => "2048000"
+        );
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload()) {
+          $data['message_error'] = $this->upload->display_errors();
+        } else {
+          $data = $this->upload->data();
+          $data_insert = array(
+            'galeria' => $id,
+            'url' => $data['file_name']
+          );
+
+          if($query = $this->Galerias_model->insert_imagens($data_insert)) {
+            $data['message_error'] = "Cadastro realizado com sucesso";
+          } else {
+            $data['message_error'] = "Houve um erro ao cadastrar. Por favor confira os dados cadastrados e tente novamente";
+            $data['main_content'] = 'admin/galerias/add_images';
+            $this->load->view('includes/admin_template', $data);
+          }
+        }
+      }
+    }
+
+    $data['titulo_galeria'] = $this->Galerias_model->get_galeria_titulo_by_id($id);
+    $data['main_content'] = 'admin/galerias/add_images';
     $this->load->view('includes/admin_template', $data);
   }
 
