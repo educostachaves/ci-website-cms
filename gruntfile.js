@@ -72,10 +72,6 @@ module.exports = function (grunt) {
         src: [
           '<%= config.srcPath %>/javascripts/jquery.js',
           '<%= config.srcPath %>/javascripts/bootstrap.js',
-          '<%= config.srcPath %>/javascripts/slippy.js',
-          '<%= config.srcPath %>/javascripts/jquery.stellar.js',
-          '<%= config.srcPath %>/javascripts/main.js',
-          '<%= config.srcPath %>/javascripts/maps.js',
         ],
         dest: '<%= config.buildPath %>/javascripts/main.js'
       },

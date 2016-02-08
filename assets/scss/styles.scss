@@ -1,18 +1,22 @@
+@import "bootstrap-compass";
+@import "bootstrap-variables";
 @import "bootstrap";
+@import "font-awesome";
 
 @import "custom-components/reset",
 				"custom-components/variables",
 				"custom-components/type",
+				"custom-components/navbar",
 				"custom-components/carousel";
 
 body {
   color: #5a5a5a;
+	font-family: 'lato-regular';
   padding-bottom: 40px;
 }
 
-
 .marketing {
-  .col-lg-4 {
+  .box {
     margin-bottom: 20px;
     text-align: center;
   }
