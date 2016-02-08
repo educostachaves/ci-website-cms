@@ -51,6 +51,7 @@ $route['admin/logout'] = 'user/logout';
 $route['admin/login/validate_credentials'] = 'user/validate_credentials';
 
 $route['admin/painel'] = 'panel/index';
+$route['admin/configuracoes'] = 'configuracoes/index';
 
 $route['admin/usuarios'] = 'user/list_all';
 $route['admin/usuarios/listar'] = 'user/list_all';
