@@ -96,6 +96,20 @@
         </li>
         <li>
           <a href="#">
+            <i class="fa fa-picture-o fa-fw"></i> Galerias
+            <span class="fa arrow"></span>
+          </a>
+          <ul class="nav nav-second-level">
+            <li>
+              <a href="<?php echo base_url(); ?>admin/galerias/">Listar Galerias</a>
+            </li>
+            <li>
+              <a href="<?php echo base_url(); ?>admin/galerias/novo">Cadastrar Galeria</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
             <i class="fa fa-users fa-fw"></i> Usuários
             <span class="fa arrow"></span>
           </a>
