@@ -66,12 +66,6 @@ $route['admin/novidades/novo'] = 'novidades/create';
 $route['admin/novidades/editar/(:num)'] = 'novidades/update/$1';
 $route['admin/novidades/excluir/(:num)'] = 'novidades/delete/$1';
 
-$route['admin/linguagens'] = 'linguagens/index';
-$route['admin/linguagens/(:num)'] = 'linguagens/index/$1';
-$route['admin/linguagens/novo'] = 'linguagens/create';
-$route['admin/linguagens/editar/(:num)'] = 'linguagens/update/$1';
-$route['admin/linguagens/excluir/(:num)'] = 'linguagens/delete/$1';
-
 $route['admin/galerias'] = 'galerias/index';
 $route['admin/galerias/(:num)'] = 'galerias/index/$1';
 $route['admin/galerias/novo'] = 'galerias/create';
