@@ -96,15 +96,26 @@
         </li>
         <li>
           <a href="#">
+<<<<<<< HEAD
             <i class="fa fa-picture-o fa-fw"></i> Galerias
+=======
+            <i class="fa fa-file-text fa-fw"></i> Paginas
+>>>>>>> origin/master
             <span class="fa arrow"></span>
           </a>
           <ul class="nav nav-second-level">
             <li>
+<<<<<<< HEAD
               <a href="<?php echo base_url(); ?>admin/galerias/">Listar Galerias</a>
             </li>
             <li>
               <a href="<?php echo base_url(); ?>admin/galerias/novo">Cadastrar Galeria</a>
+=======
+              <a href="<?php echo base_url(); ?>admin/paginas/">Listar Páginas</a>
+            </li>
+            <li>
+              <a href="<?php echo base_url(); ?>admin/paginas/novo">Cadastrar Página</a>
+>>>>>>> origin/master
             </li>
           </ul>
         </li>
