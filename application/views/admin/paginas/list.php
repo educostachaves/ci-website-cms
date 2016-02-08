@@ -29,8 +29,9 @@
           <table class="table table-striped table-bordered table-hover" id="dataTables-example">
             <thead>
               <tr>
-                <th class="col-md-4">Título</th>
-                <th class="col-md-2">Língua</th>
+                <th class="col-md-2">Título Português</th>
+                <th class="col-md-2">Título Inglês</th>
+                <th class="col-md-2">Título Espanhol</th>
                 <th class="col-md-2">Data</th>
                 <th class="col-md-2">Autor</th>
                 <th class="col-md-2">Opções</th>
@@ -42,15 +43,9 @@
     						foreach($paginas as $pagina) {
     					?>
               <tr>
-                <td><?php echo $pagina->titulo; ?></td>
-                <td>
-                  <?php
-                  foreach ($lista_linguagens as $linguagem) {
-                    if ($pagina->lingua == $linguagem->id) {
-                      echo $linguagem->titulo;
-                    }
-                  }
-                  ?></td>
+                <td><?php echo $pagina->titulo_br; ?></td>
+                <td><?php echo $pagina->titulo_en; ?></td>
+                <td><?php echo $pagina->titulo_es; ?></td>
                 <td><?php echo date("d/m/Y", strtotime($pagina->data)); ?></td>
                 <td><?php echo $pagina->autor; ?></td>
                 <td class="center">
@@ -67,7 +62,7 @@
                 } else {
               ?>
               <tr>
-                <td colspan="5">Sem dados na listagem</td>
+                <td colspan="6">Sem dados na listagem</td>
               </tr>
               <?php
                 }

@@ -51,7 +51,6 @@ class Novidades extends CI_Controller {
 		$this->pagination->initialize($config);
 
 		$data["paginacao"] =  $this->pagination->create_links();
-    $data["lista_linguagens"] = $this->Linguagens_model->get_all_linguagens();
 		$data["novidades"] = $this->Novidades_model->get_novidades($maximo,$inicio);
     $data['main_content'] = 'admin/novidades/list';
     $this->load->view('includes/admin_template', $data);
@@ -59,10 +58,10 @@ class Novidades extends CI_Controller {
 
   public function create() {
     if ($this->input->server('REQUEST_METHOD') === 'POST') {
-			$this->form_validation->set_rules('titulo', 'Título', 'trim|required|min_length[4]|max_length[140]');
+			$this->form_validation->set_rules('titulo_br', 'Título', 'trim|required|min_length[4]|max_length[140]');
 			$this->form_validation->set_rules('palavras_chave', 'Palavras chave', 'trim|required|min_length[4]|max_length[140]');
       $this->form_validation->set_rules('descricao', 'Descrição', 'trim|required|min_length[4]|max_length[300]');
-			$this->form_validation->set_rules('texto', 'Texto', 'trim|required');
+			$this->form_validation->set_rules('texto_br', 'Texto', 'trim|required');
 			$this->form_validation->set_error_delimiters('<span>', '</span>');
 			if($this->form_validation->run() != FALSE) {
         $config = array(
@@ -78,14 +77,17 @@ class Novidades extends CI_Controller {
         } else {
           $file_data = $this->upload->data();
           $data_insert = array(
-            'titulo' => $this->input->post('titulo'),
-            'lingua' => $this->input->post('lingua'),
+            'titulo_br' => $this->input->post('titulo_br'),
+            'titulo_en' => $this->input->post('titulo_en'),
+            'titulo_es' => $this->input->post('titulo_es'),
             'imagem' => $file_data['file_name'],
             'descricao' => $this->input->post('descricao'),
             'autor' => $this->input->post('autor'),
             'palavras_chave' => $this->input->post('palavras_chave'),
-            'texto' => $this->input->post('texto'),
-            'url' => strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $this->input->post('titulo'))),
+            'texto_br' => $this->input->post('texto_br'),
+            'texto_en' => $this->input->post('texto_en'),
+            'texto_es' => $this->input->post('texto_es'),
+            'url' => strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $this->input->post('titulo_br'))),
             'data' => date("Y-m-d H:i:s")
           );
           if($query = $this->Novidades_model->create($data_insert)) {
@@ -96,7 +98,6 @@ class Novidades extends CI_Controller {
         }
       }
 		}
-    $data["lista_linguagens"] = $this->Linguagens_model->get_all_linguagens();
     $data['main_content'] = 'admin/novidades/create';
     $this->load->view('includes/admin_template', $data);
   }
@@ -104,10 +105,10 @@ class Novidades extends CI_Controller {
   public function update() {
     $id = $this->uri->segment(4);
     if ($this->input->server('REQUEST_METHOD') === 'POST') {
-			$this->form_validation->set_rules('titulo', 'Título', 'trim|required|min_length[4]|max_length[140]');
+			$this->form_validation->set_rules('titulo_br', 'Título', 'trim|required|min_length[4]|max_length[140]');
 			$this->form_validation->set_rules('palavras_chave', 'Palavras chave', 'trim|required|min_length[4]|max_length[140]');
       $this->form_validation->set_rules('descricao', 'Descrição', 'trim|required|min_length[4]|max_length[300]');
-			$this->form_validation->set_rules('texto', 'Texto', 'trim|required');
+			$this->form_validation->set_rules('texto_br', 'Texto', 'trim|required');
 			$this->form_validation->set_error_delimiters('<span>', '</span>');
 			if($this->form_validation->run() != FALSE) {
         if (!empty($_FILES["imagem"]['name'])) {
@@ -125,24 +126,32 @@ class Novidades extends CI_Controller {
             unlink("./uploads/".$this->Novidades_model->get_imagem_by_id($id));
             $file_data = $this->upload->data();
             $data_update = array(
-              'titulo' => $this->input->post('titulo'),
+              'titulo_br' => $this->input->post('titulo_br'),
+              'titulo_en' => $this->input->post('titulo_en'),
+              'titulo_es' => $this->input->post('titulo_es'),
               'imagem' => $file_data['file_name'],
               'descricao' => $this->input->post('descricao'),
               'autor' => $this->input->post('autor'),
               'palavras_chave' => $this->input->post('palavras_chave'),
-              'texto' => $this->input->post('texto'),
-              'url' => strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $this->input->post('titulo'))),
+              'texto_br' => $this->input->post('texto_br'),
+              'texto_en' => $this->input->post('texto_en'),
+              'texto_es' => $this->input->post('texto_es'),
+              'url' => strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $this->input->post('titulo_br'))),
               'data' => date("Y-m-d H:i:s")
             );
           }
         } else {
           $data_update = array(
-            'titulo' => $this->input->post('titulo'),
+            'titulo_br' => $this->input->post('titulo_br'),
+            'titulo_en' => $this->input->post('titulo_en'),
+            'titulo_es' => $this->input->post('titulo_es'),
             'descricao' => $this->input->post('descricao'),
             'autor' => $this->input->post('autor'),
             'palavras_chave' => $this->input->post('palavras_chave'),
-            'texto' => $this->input->post('texto'),
-            'url' => preg_replace('/[^A-Za-z0-9-]+/', '-', $this->input->post('titulo')),
+            'texto_br' => $this->input->post('texto_br'),
+            'texto_en' => $this->input->post('texto_en'),
+            'texto_es' => $this->input->post('texto_es'),
+            'url' => strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $this->input->post('titulo_br'))),
             'data' => date("Y-m-d H:i:s")
           );
         }

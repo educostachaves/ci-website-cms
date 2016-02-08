@@ -27,7 +27,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo base_url(); ?>admin/painel/configuracoes/">
+          <a href="<?php echo base_url(); ?>admin/configuracoes/">
             <i class="fa fa-gear fa-fw"></i> Configurações do Site
           </a>
         </li>
