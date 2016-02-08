@@ -39,14 +39,14 @@ $arrows_url: '/images/arrows.svg' !default;
 }
 
 @mixin animation ($animation) {
-  -webkit-animation-name: $animation;
-  -webkit-animation-fill-mode: forwards;
-  -moz-animation-name: $animation;
   -moz-animation-fill-mode: forwards;
-  -o-animation-name: $animation;
+  -moz-animation-name: $animation;
   -o-animation-fill-mode: forwards;
-  animation-name: $animation;
+  -o-animation-name: $animation;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-name: $animation;
   animation-fill-mode: forwards;
+  animation-name: $animation;
 }
 
 /* kenBurns animations, very basic */
@@ -54,6 +54,7 @@ $arrows_url: '/images/arrows.svg' !default;
   0% {
     @include transform(translateY(-20%) translateX(-10%));
   }
+
   100% {
     @include transform(translateY(0%) translateX(10%));
   }
@@ -62,6 +63,7 @@ $arrows_url: '/images/arrows.svg' !default;
   0% {
     @include transform(translateY(0%) translateX(10%));
   }
+
   100% {
     @include transform(translateY(-20%) translateX(-10%));
   }
@@ -70,250 +72,300 @@ $arrows_url: '/images/arrows.svg' !default;
 /* added to the original element calling slippry */
 .sy-box {
   &.sy-loading {
-    .sy-slides-wrap, .sy-pager {
+    @include background-size(32px);
+    background: url($spinner_url) 50% 50% no-repeat;
+    min-height: 40px;
+
+    .sy-slides-wrap,
+    .sy-pager {
       visibility: hidden;
     }
-    background: url($spinner_url) 50% 50% no-repeat;
-    @include background-size(32px);
-    min-height: 40px;
   }
 }
+
 /* element that wraps the slides */
 .sy-slides-wrap {
-  position: relative;
   height: 100%;
+  position: relative;
   width: 100%;
+
   &:hover {
     .sy-controls {
       display: block;
     }
   }
 }
+
 /* element that crops the visible area to the slides */
 .sy-slides-crop {
   height: 100%;
-  width: 100%;
-  position: absolute;
   overflow: hidden;
+  position: absolute;
+  width: 100%;
 }
+
 /* list containing the slides */
 .sy-list {
-  &.horizontal {
-    @include transition(left $trans_ease);
-  }
-  &.vertical {
-    @include transition(top $trans_ease);
-  }
-  width: 100%;
   height: 100%;
   list-style: none;
   margin: 0;
   padding: 0;
   position: absolute;
+  width: 100%;
+
+  &.horizontal {
+    @include transition(left $trans_ease);
+  }
+
+  &.vertical {
+    @include transition(top $trans_ease);
+  }
 }
+
 /* single slide */
 .sy-slide {
   position: absolute;
   width: 100%;
   z-index: 2;
+
   &.kenburns {
-    width: 140%;
     left: -20%;
-    &.useCSS {
-      &.sy-ken {
-        &:nth-child(1n) {
-          @include animation(left-right);
-        }
-        &:nth-child(2n) {
-          @include animation(right-left);
-        }
-      }
+    width: 140%;
+
+    &.useCSS.sy-ken {
       @include transition-property(opacity);
+
+      &:nth-child(1n) {
+        @include animation(left-right);
+      }
+
+      &:nth-child(2n) {
+        @include animation(right-left);
+      }
+
     }
   }
+
   &.sy-active {
     z-index: 3;
   }
+
   > img { // with one image as content -> full size
-    margin: 0;
-    padding: 0;
-    display: block;
-    width: 100%;
     border: 0;
-  }
-  > a { // styling for link on whole slide
+    display: block;
     margin: 0;
     padding: 0;
-    display: block;
     width: 100%;
+  }
+
+  > a { // styling for link on whole slide
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
     > img { // with one image as content -> full size
+      border: 0;
+      display: block;
       margin: 0;
       padding: 0;
-      display: block;
       width: 100%;
-      border: 0;
     }
   }
 }
+
 /* next/ prev buttons, with arrows and clickable area a lot larger than the visible buttons */
 .sy-controls {
   display: none;
-  list-style: none;
   height: 100%;
-  width: 100%;
-  position: absolute;
-  padding: 0;
+  list-style: none;
   margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+
   li {
+    height: 100%;
+    min-width: $controls_size * 1.5;
     position: absolute;
     width: 10%;
-    min-width: $controls_size * 1.5;
-    height: 100%;
     z-index: 33;
+
     &.sy-prev {
       left: 0;
       top: 0;
+
       a {
         &:after {
           background-position: -5% 0;
         }
       }
     }
+
     &.sy-next {
       right: 0;
       top: 0;
+
       a {
         &:after {
           background-position: 105% 0;
         }
       }
     }
+
     a {
-      position: relative;
-      width: 100%;
-      height: 100%;
       display: block;
+      height: 100%;
+      position: relative;
       text-indent: -9999px;
-      &:link, &:visited {
-        opacity: 0.4;
+      width: 100%;
+
+      &:link,
+      &:visited {
+        opacity: .4;
       }
-      &:hover, &:focus {
-        opacity: 0.8;
+
+      &:hover,
+      &:focus {
+        opacity: .8;
         outline: none;
       }
+
       &:after {
-        content: "";
+        @include background-size(cover);
+        @include border-radius(50%);
+        background-color: #fff;
         background-image: url($arrows_url);
         background-repeat: no-repeat;
-        @include background-size(cover);
-        text-align: center;
-        text-indent: 0;
-        line-height: $controls_size;
         color: #111;
+        content: "";
         font-weight: 800;
-        position: absolute;
-        background-color: #fff;
-        width: $controls_size;
         height: $controls_size;
         left: 50%;
-        top: 50%;
-        margin-top: -$controls_size / 2;
+        line-height: $controls_size;
         margin-left: -$controls_size / 2;
-        @include border-radius(50%);
+        margin-top: -$controls_size / 2;
+        position: absolute;
+        text-align: center;
+        text-indent: 0;
+        top: 50%;
+        width: $controls_size;
       }
     }
   }
-  @media only screen and (max-device-width : $mobile_break) {
+
+  @media only screen and (max-device-width: $mobile_break) {
     display: block;
     $controls_size: $controls_size / 2;
+
     li {
       min-width: $controls_size * 1.5;
+
       a {
         &:after {
-          width: $controls_size;
           height: $controls_size;
-          margin-top: -$controls_size / 2;
           margin-left: -$controls_size / 2;
+          margin-top: -$controls_size / 2;
+          width: $controls_size;
         }
       }
     }
   }
 }
+
 /* captions, styled fo the overlay variant */
 .sy-caption-wrap {
-  position: absolute;
   bottom: 2em;
-  z-index: 12;
   left: 50%;
+  position: absolute;
+  z-index: 12;
+
   .sy-caption {
-    position: relative;
-    left: -50%;
-    background-color: rgba(0,0,0,0.54);
-    color: #fff;
-    padding: 0.4em 1em;
     @include border-radius(1.2em);
+    background-color: rgba(0, 0, 0, .54);
+    color: #fff;
+    left: -50%;
+    padding: .4em 1em;
+    position: relative;
+
     a {
-      &:link, &:visited {
+      &:link,
+      &:visited {
         color: $color_high;
         font-weight: 600;
         text-decoration: none;
       }
-      &:hover, &:focus {
+
+      &:hover,
+      &:focus {
         text-decoration: underline;
       }
     }
   }
-  @media only screen and (max-device-width : $mobile_break), screen and (max-width : $mobile_break) {
+
+  @media only screen and (max-device-width: $mobile_break),
+              screen and (max-width: $mobile_break) {
+    bottom: .4em;
     left: 0;
-    bottom: 0.4em;
+
     .sy-caption {
-      left: 0;
-      padding: 0.2em 0.4em;
-      font-size: 0.92em;
       @include border-radius(0);
+      font-size: .92em;
+      left: 0;
+      padding: .2em .4em;
     }
   }
 }
+
 /* pager bubbles */
 .sy-pager {
   @include clearfix;
   display: block;
-  width: 100%;
+  list-style: none;
   margin: 1em 0 0;
   padding: 0;
-  list-style: none;
   text-align: center;
+  width: 100%;
+
   li {
+    @include border-radius(50%);
     display: inline-block;
-    width: $pager_size;
     height: $pager_size;
     margin: 0 1em 0 0;
-    @include border-radius(50%);
+    width: $pager_size;
+
     &.sy-active {
       a {
         background-color: $color_high;
       }
     }
+
     a {
-      width: 100%;
-      height: 100%;
-      display: block;
       background-color: $color_gray;
+      display: block;
+      height: 100%;
       text-indent: -9999px;
-      &:link, &:visited {
-        opacity: 1.0;
+      width: 100%;
+
+      &:link,
+      &:visited {
+        opacity: 1;
       }
-      &:hover, &:focus {
-        opacity: 0.6;
+
+      &:hover,
+      &:focus {
+        opacity: .6;
       }
       @include background-size(2em);
       @include border-radius(50%);
     }
   }
 }
+
 /* element to "keep/ fill" the space of the content, gets intrinsic height via js */
 .sy-filler {
   width: 100%;
+
   &.ready {
     @include transition(padding 600ms ease);
   }

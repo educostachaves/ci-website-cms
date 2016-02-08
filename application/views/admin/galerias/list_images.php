@@ -18,6 +18,14 @@
         echo '</div>';
       }
     ?>
+    <div class="row">
+      <div class="col-lg-12">
+        <a href="<?php echo base_url();?>admin/galerias/imagens/novo/<?php echo $this->uri->segment("4"); ?>" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Editar">
+          <i class="fa fa-picture-o"></i>
+          Adicionar Fotos
+        </a>
+      </div>
+    </div>
     <div class="panel panel-default">
       <div class="panel-heading">
         Todas as imagens da galeria listadas

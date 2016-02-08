@@ -11,23 +11,22 @@ body {
 }
 
 // Wrappers
-
 #wrapper {
   width: 100%;
 }
 
 #page-wrapper {
-  padding: 0 15px;
+  background-color: $white;
   min-height: 568px;
-  background-color: white;
+  padding: 0 15px;
 }
 
-@media(min-width:768px) {
+@media(min-width: 768px) {
   #page-wrapper {
-    position: inherit;
+    border-left: 1px solid darken($gray-lightest, 6.5%);
     margin: 0 0 0 250px;
     padding: 0 30px;
-    border-left: 1px solid darken($gray-lightest, 6.5%);
+    position: inherit;
   }
 }
 
@@ -48,8 +47,8 @@ body {
 }
 
 .navbar-top-links li a {
-  padding: 15px;
   min-height: 50px;
+  padding: 15px;
 }
 
 .navbar-top-links .dropdown-menu li {
@@ -61,8 +60,8 @@ body {
 }
 
 .navbar-top-links .dropdown-menu li a {
-  padding: 3px 20px;
   min-height: 0;
+  padding: 3px 20px;
 }
 
 .navbar-top-links .dropdown-menu li a div {
@@ -72,8 +71,8 @@ body {
 .navbar-top-links .dropdown-messages,
 .navbar-top-links .dropdown-tasks,
 .navbar-top-links .dropdown-alerts {
-  width: 310px;
   min-width: 0;
+  width: 310px;
 }
 
 .navbar-top-links .dropdown-messages {
@@ -89,8 +88,8 @@ body {
 }
 
 .navbar-top-links .dropdown-user {
-  right: 0;
   left: auto;
+  right: 0;
 }
 
 // --Sidebar
@@ -108,10 +107,9 @@ body {
 
 .sidebar ul li {
   border-bottom: 1px solid darken($gray-lightest, 6.5%);
-  a {
-    &.active {
-      background-color: $gray-lighter;
-    }
+
+  a.active {
+    background-color: $gray-lighter;
   }
 }
 
@@ -129,7 +127,7 @@ body {
 
 .sidebar .nav-second-level li,
 .sidebar .nav-third-level li {
-  border-bottom: none !important;
+  border-bottom: 0 !important;
 }
 
 .sidebar .nav-second-level li a {
@@ -140,12 +138,12 @@ body {
   padding-left: 52px;
 }
 
-@media(min-width:768px) {
+@media(min-width: 768px) {
   .sidebar {
-    z-index: 1;
+    margin-top: 51px;
     position: absolute;
     width: 250px;
-    margin-top: 51px;
+    z-index: 1;
   }
 
   .navbar-top-links .dropdown-messages,
@@ -158,8 +156,8 @@ body {
 // Buttons
 
 .btn-outline {
-  color: inherit;
   background-color: transparent;
+  color: inherit;
   transition: all .5s;
 }
 
@@ -188,21 +186,21 @@ body {
 .btn-info.btn-outline:hover,
 .btn-warning.btn-outline:hover,
 .btn-danger.btn-outline:hover {
-  color: white;
+  color: $white;
 }
 
 // Chat Widget
 
 .chat {
+  list-style: none;
   margin: 0;
   padding: 0;
-  list-style: none;
 }
 
 .chat li {
+  border-bottom: 1px dotted $gray-light;
   margin-bottom: 10px;
   padding-bottom: 5px;
-  border-bottom: 1px dotted $gray-light;
 }
 
 .chat li.left .chat-body {
@@ -217,14 +215,20 @@ body {
   margin: 0;
 }
 
-.panel .slidedown .glyphicon,
+.slidedown .glyphicon,
 .chat .glyphicon {
   margin-right: 5px;
+}
+
+.panel {
+  margin-right: 5px;
+  margin-top: 10px;
 }
 
 .chat-panel .panel-body {
   height: 350px;
   overflow-y: scroll;
+
 }
 
 // Login Page
@@ -241,8 +245,8 @@ body {
 }
 
 .flot-chart-content {
-  width: 100%;
   height: 100%;
+  width: 100%;
 }
 
 // DataTables Overrides
@@ -268,49 +272,49 @@ table.dataTable thead .sorting_desc:after {
 }
 
 table.dataTable thead .sorting:after {
+  color: rgba(50, 50, 50, .5);
   content: "\f0dc";
   float: right;
   font-family: fontawesome;
-  color: rgba(50,50,50,.5);
 }
 
 // Circle Buttons
 
 .btn-circle {
-  width: 30px;
-  height: 30px;
-  padding: 6px 0;
   border-radius: 15px;
-  text-align: center;
   font-size: 12px;
+  height: 30px;
   line-height: 1.428571429;
+  padding: 6px 0;
+  text-align: center;
+  width: 30px;
 }
 
 .btn-circle.btn-lg {
-  width: 50px;
-  height: 50px;
-  padding: 10px 16px;
   border-radius: 25px;
   font-size: 18px;
+  height: 50px;
   line-height: 1.33;
+  padding: 10px 16px;
+  width: 50px;
 }
 
 .btn-circle.btn-xl {
-  width: 70px;
-  height: 70px;
-  padding: 10px 16px;
   border-radius: 35px;
   font-size: 24px;
+  height: 70px;
   line-height: 1.33;
+  padding: 10px 16px;
+  width: 70px;
 }
 
 // Grid Demo Elements
 
 .show-grid [class^="col-"] {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border: 1px solid #ddd;
   background-color: #eee !important;
+  border: 1px solid #ddd;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 
 .show-grid {
@@ -325,13 +329,16 @@ table.dataTable thead .sorting:after {
 
 .panel-green {
   border-color: $brand-success;
+
   .panel-heading {
-    border-color: $brand-success;
-    color: white;
     background-color: $brand-success;
+    border-color: $brand-success;
+    color: $white;
   }
+
   a {
     color: $brand-success;
+
     &:hover {
       color: darken($brand-success, 15%);
     }
@@ -340,13 +347,16 @@ table.dataTable thead .sorting:after {
 
 .panel-red {
   border-color: $brand-danger;
+
   .panel-heading {
-    border-color: $brand-danger;
-    color: white;
     background-color: $brand-danger;
+    border-color: $brand-danger;
+    color: $white;
   }
+
   a {
     color: $brand-danger;
+
     &:hover {
       color: darken($brand-danger, 15%);
     }
@@ -355,13 +365,16 @@ table.dataTable thead .sorting:after {
 
 .panel-yellow {
   border-color: $brand-warning;
+
   .panel-heading {
-    border-color: $brand-warning;
-    color: white;
     background-color: $brand-warning;
+    border-color: $brand-warning;
+    color: $white;
   }
+
   a {
     color: $brand-warning;
+
     &:hover {
       color: darken($brand-warning, 15%);
     }

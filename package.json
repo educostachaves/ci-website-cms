@@ -26,6 +26,7 @@
     "grunt-contrib-uglify": "^0.6.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-csscomb": "^3.1.0",
+    "grunt-sass-lint": "^0.1.0",
     "grunt-tinyimg": "^1.0.0"
   }
 }

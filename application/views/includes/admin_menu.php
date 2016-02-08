@@ -52,20 +52,20 @@
             <i class="fa fa-dashboard fa-fw"></i> Principal
           </a>
         </li>
-        <!--<li>
+        <li>
           <a href="#">
-            <i class="fa fa-file-o fa-fw"></i> Páginas
+            <i class="fa fa-file-text fa-fw"></i> Páginas
             <span class="fa arrow"></span>
           </a>
           <ul class="nav nav-second-level">
             <li>
-              <a href="#">Listar Páginas</a>
+              <a href="<?php echo base_url(); ?>admin/paginas/">Listar Páginas</a>
             </li>
             <li>
-              <a href="#">Cadastrar Páginas</a>
+              <a href="<?php echo base_url(); ?>admin/paginas/novo">Cadastrar Página</a>
             </li>
           </ul>
-        </li>-->
+        </li>
         <li>
           <a href="#">
             <i class="fa fa-comment-o fa-fw"></i> Novidades
@@ -82,6 +82,20 @@
         </li>
         <li>
           <a href="#">
+            <i class="fa fa-picture-o fa-fw"></i> Galerias
+            <span class="fa arrow"></span>
+          </a>
+          <ul class="nav nav-second-level">
+            <li>
+              <a href="<?php echo base_url(); ?>admin/galerias/">Listar Galerias</a>
+            </li>
+            <li>
+              <a href="<?php echo base_url(); ?>admin/galerias/novo">Cadastrar Galeria</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
             <i class="fa fa-flag fa-fw"></i> Linguagens
             <span class="fa arrow"></span>
           </a>
@@ -91,31 +105,6 @@
             </li>
             <li>
               <a href="<?php echo base_url(); ?>admin/linguagens/novo">Cadastrar Língua</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">
-<<<<<<< HEAD
-            <i class="fa fa-picture-o fa-fw"></i> Galerias
-=======
-            <i class="fa fa-file-text fa-fw"></i> Paginas
->>>>>>> origin/master
-            <span class="fa arrow"></span>
-          </a>
-          <ul class="nav nav-second-level">
-            <li>
-<<<<<<< HEAD
-              <a href="<?php echo base_url(); ?>admin/galerias/">Listar Galerias</a>
-            </li>
-            <li>
-              <a href="<?php echo base_url(); ?>admin/galerias/novo">Cadastrar Galeria</a>
-=======
-              <a href="<?php echo base_url(); ?>admin/paginas/">Listar Páginas</a>
-            </li>
-            <li>
-              <a href="<?php echo base_url(); ?>admin/paginas/novo">Cadastrar Página</a>
->>>>>>> origin/master
             </li>
           </ul>
         </li>

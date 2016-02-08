@@ -13,6 +13,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-cache-bust');
+  grunt.loadNpmTasks('grunt-sass-lint');
   grunt.loadNpmTasks('grunt-tinyimg');
   grunt.loadNpmTasks('grunt-csscomb');
   grunt.file.defaultEncoding = 'utf8';
@@ -102,6 +103,13 @@ module.exports = function (grunt) {
       }
     },
 
+    sasslint: {
+        options: {
+            configFile: '.sass-lint.yml',
+        },
+        target: ['<%= config.srcPath %>/scss/*.scss']
+    },
+
     compass: {
       build: {
         options: {
@@ -148,9 +156,9 @@ module.exports = function (grunt) {
   });
 
   // Default Task(s).
-  grunt.registerTask('build', ['clean', 'concat', 'uglify', 'compass', 'csscomb', 'cssmin', 'tinyimg', 'cacheBust']);
+  grunt.registerTask('build', ['clean', 'concat', 'uglify', 'sasslint', 'compass', 'csscomb', 'cssmin', 'tinyimg', 'cacheBust']);
   // Build Dev Task(s).
-  grunt.registerTask('build-dev', ['clean', 'concat', 'uglify', 'compass', 'csscomb', 'cssmin']);
+  grunt.registerTask('build-dev', ['clean', 'concat', 'uglify', 'sasslint', 'compass', 'csscomb', 'cssmin']);
   // Basic Test Task(s).
   grunt.registerTask('basic', ['concat', 'compass']);
   // Only JS Task(s)
