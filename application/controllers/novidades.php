@@ -6,7 +6,6 @@ class Novidades extends CI_Controller {
   public function __construct() {
     parent::__construct();
     $this->load->model('Novidades_model');
-    $this->load->model('Linguagens_model');
     $this->load->library('pagination');
 
     if(!$this->session->userdata('is_logged_in')){

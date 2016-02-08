@@ -8,7 +8,7 @@
       <span class="icon-bar"></span>
     </button>
     <a class="navbar-brand" href="<?php echo base_url(); ?>admin/painel">
-      André Dourado
+      <?php echo $page_name; ?>
     </a>
   </div>
 

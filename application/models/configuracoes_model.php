@@ -18,4 +18,14 @@ class Configuracoes_model extends CI_Model {
 		return $query->result();
 	}
 
+	function get_configuracoes_nome($id = 1) {
+		$this->db->select('nome');
+		$this->db->where('id', $id);
+		$query = $this->db->get('configuracoes');
+		if ($query->num_rows() > 0) {
+		   $row = $query->row();
+		   return $row->nome;
+		}
+	}
+
 }

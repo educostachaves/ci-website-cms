@@ -6,6 +6,7 @@ class User extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('Users_model');
+		$this->load->model('Configuracoes_model');
 	}
 
 	public function index() {
@@ -91,7 +92,8 @@ class User extends CI_Controller {
 				'usuario_login' => $is_valid->nome,
 				'email_login' => $email,
 				'tipo_usuario_login' => $is_valid->tipo,
-				'is_logged_in' => true
+				'is_logged_in' => true,
+				'page_name' => $this->Configuracoes_model->get_configuracoes_nome()
 			);
 			$this->session->set_userdata($data);
 			redirect('admin/painel');

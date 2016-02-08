@@ -6,7 +6,6 @@ class Paginas extends CI_Controller {
   public function __construct() {
     parent::__construct();
     $this->load->model('Paginas_model');
-    $this->load->model('Linguagens_model');
     $this->load->library('pagination');
   }
 

@@ -99,4 +99,8 @@ class Users_model extends CI_Model {
 		return $this->db->count_all_results('usuario');
 	}
 
+	function count_users() {
+		return $this->db->count_all_results('usuario');
+	}
+
 }

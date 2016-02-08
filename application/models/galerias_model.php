@@ -65,6 +65,16 @@ class Galerias_model extends CI_Model {
 		}
 	}
 
+	function get_imagem_by_id($id) {
+		$this->db->select('imagem');
+		$this->db->where('id', $id);
+		$query = $this->db->get('galeria');
+		if ($query->num_rows() > 0) {
+		   $row = $query->row();
+		   return $row->imagem;
+		}
+	}
+
 	function get_galeria_id_by_galeria_imagem_id($id) {
 		$this->db->select('galeria');
 		$this->db->where('id', $id);
@@ -74,6 +84,7 @@ class Galerias_model extends CI_Model {
 		   return $row->galeria;
 		}
 	}
+
 	function insert_imagens($data)	{
 		$insert = $this->db->insert('galeria_imagem', $data);
 		return $insert;
