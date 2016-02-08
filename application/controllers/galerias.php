@@ -161,13 +161,13 @@ class Galerias extends CI_Controller {
 
   public function add_images() {
     $id = $this->uri->segment(5);
-    
+
     $data['titulo_galeria'] = $this->Galerias_model->get_galeria_titulo_by_id($id);
     $data['main_content'] = 'admin/galerias/add_images';
     $this->load->view('includes/admin_template', $data);
   }
 
-  function upload() {
+  public function upload() {
     $id = $this->uri->segment(5);
 
     $name_array = array();
@@ -214,5 +214,16 @@ class Galerias extends CI_Controller {
     $data['main_content'] = 'admin/galerias/add_images';
     $this->load->view('includes/admin_template', $data);
   }
+
+  public function delete_image() {
+		$id = $this->uri->segment(5);
+    unlink("./uploads/".$this->Galerias_model->get_galeria_imagem_by_id($id));
+    $id_galeria = $this->Galerias_model->get_galeria_id_by_galeria_imagem_id($id);
+		if ($this->Galerias_model->delete_image($id)) {
+      redirect('admin/galerias/imagens/'.$id_galeria);
+		} else {
+			redirect('admin/galerias/imagens/'.$id_galeria);
+		}
+	}
 
 }

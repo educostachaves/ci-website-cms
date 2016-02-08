@@ -55,9 +55,33 @@ class Galerias_model extends CI_Model {
 		}
 	}
 
+	function get_galeria_imagem_by_id($id)	{
+		$this->db->select('url');
+		$this->db->where('id', $id);
+		$query = $this->db->get('galeria_imagem');
+		if ($query->num_rows() > 0) {
+		   $row = $query->row();
+		   return $row->url;
+		}
+	}
+
+	function get_galeria_id_by_galeria_imagem_id($id) {
+		$this->db->select('galeria');
+		$this->db->where('id', $id);
+		$query = $this->db->get('galeria_imagem');
+		if ($query->num_rows() > 0) {
+		   $row = $query->row();
+		   return $row->galeria;
+		}
+	}
 	function insert_imagens($data)	{
 		$insert = $this->db->insert('galeria_imagem', $data);
 		return $insert;
+	}
+
+	function delete_image($id){
+		$this->db->where('id', $id);
+		$this->db->delete('galeria_imagem');
 	}
 
 	function count_galerias() {

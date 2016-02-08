@@ -50,9 +50,7 @@
                 <td><img src='<?php echo base_url()."uploads/".$imagem->url; ?>' class='img-responsive' width="100"/></td>
                 <td><?php echo $imagem->url; ?></td>
                 <td class="center">
-                  <a href="<?php echo base_url();?>admin/galerias/imagens/editar/<?php echo $imagem->id; ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar">
-                    <i class="fa fa-pencil"></i>
-                  <a href="<?php echo base_url();?>admin/galerias/imagem/excluir/<?php echo $imagem->id; ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Excluir">
+                  <a href="<?php echo base_url();?>admin/galerias/imagens/excluir/<?php echo $imagem->id; ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Excluir">
                     <i class="fa fa-trash"></i>
                   </a>
                 </td>

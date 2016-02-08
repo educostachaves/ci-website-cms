@@ -5,14 +5,6 @@
 </div>
 <div class="row">
   <div class="col-lg-12">
-    <a href="<?php echo base_url();?>admin/galerias/imagens/<?php echo $this->uri->segment("5"); ?>" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Editar">
-      <i class="fa fa-picture-o"></i>
-      Visualizar Fotos da Galeria
-    </a>
-  </div>
-</div>
-<div class="row">
-  <div class="col-lg-12">
     <?php
       echo form_open_multipart('admin/galerias/imagens/upload/'.$this->uri->segment("5"));
 
@@ -28,6 +20,14 @@
         echo '</div>';
       }
     ?>
+    <div class="row">
+      <div class="col-lg-12">
+        <a href="<?php echo base_url();?>admin/galerias/imagens/<?php echo $this->uri->segment("5"); ?>" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Editar">
+          <i class="fa fa-picture-o"></i>
+          Visualizar Fotos da Galeria
+        </a>
+      </div>
+    </div>
     <div class="panel panel-default">
       <div class="panel-heading">
         Cadastrar Imagens
