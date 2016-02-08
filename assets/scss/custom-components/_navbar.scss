@@ -1,0 +1,40 @@
+
+.navbar-wrapper {
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 20;
+
+  > .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .navbar {
+    padding-left: 15px;
+    padding-right: 15px;
+
+    .container {
+      width: auto;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  /* Navbar positioning foo */
+  .navbar-wrapper {
+    margin-top: 20px;
+
+    .container {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .navbar {
+      border-radius: 4px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
