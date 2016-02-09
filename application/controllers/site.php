@@ -6,13 +6,32 @@ class Site extends CI_Controller {
   public function __construct() {
     parent::__construct();
     $this->load->model('Novidades_model');
+    $this->load->model('Configuracoes_model');
     $this->load->model('Paginas_model');
     $this->load->model('Galerias_model');
+
+    $data_social = array();
+    foreach ($this->Configuracoes_model->get_social_links() as $social) {
+      $data_social = array(
+        'titulo_pagina' => $social->nome,
+        'facebook_link' => $social->facebook,
+        'twitter_link' => $social->twitter,
+        'instagram_link' => $social->instagram,
+        'linkedin_link' => $social->linkedin
+      );
+    }
+    $this->session->set_userdata($data_social);
   }
 
   public function index() {
     $data['carousel_home'] = $this->Galerias_model->get_galeria_by_url('carousel-home');
     $data['main_content'] = 'site/index';
+    $data['contents'] = $this->Paginas_model->get_pagina_by_url('home');
+    foreach ($data['contents'] as $content) {
+      $data['meta']['title'] = $content->titulo_br;
+      $data['meta']['description'] = $content->descricao;
+      $data['meta']['keywords'] = $content->palavras_chave;
+    }
     $this->load->view('includes/site_template', $data);
   }
 

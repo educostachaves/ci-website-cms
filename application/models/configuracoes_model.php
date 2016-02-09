@@ -28,4 +28,11 @@ class Configuracoes_model extends CI_Model {
 		}
 	}
 
+	function get_social_links($id = 1) {
+		$this->db->select('*');
+		$this->db->where('id', $id);
+		$query = $this->db->get('configuracoes');
+		return $query->result();
+	}
+
 }
