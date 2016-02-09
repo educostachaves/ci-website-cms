@@ -83,11 +83,12 @@ $route['admin/paginas/editar/(:num)'] = 'paginas/update/$1';
 $route['admin/paginas/excluir/(:num)'] = 'paginas/delete/$1';
 
 $route['home'] = 'site/index';
+$route['change_language'] = 'site/change_language';
 $route['novidades'] = 'site/novidades';
-$route['novidades/(:any)'] = 'site/novidade_url';
+$route['novidades/(:any)'] = 'site/novidade_url/';
 $route['sobre'] = 'site/sobre';
-$route['termos-de-uso'] = 'site/termos_de_uso';
-$route['politicas-de-privacidade'] = 'site/politicas_de_privacidade';
+//$route['termos-de-uso'] = 'site/termos_de_uso';
+//$route['politicas-de-privacidade'] = 'site/politicas_de_privacidade';
 $route['contato'] = 'site/contato';
 $route['enviar'] = 'site/enviar_mensagem';
 

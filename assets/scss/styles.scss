@@ -15,9 +15,20 @@ body {
   padding-bottom: 40px;
 }
 
+.btn-language {
+	background: transparent;
+  border: 0;
+	text-align: left;
+	width: 100%;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
 .marketing {
   .box {
-    margin-bottom: 20px;
+    margin-bottom: 1em;
     text-align: center;
   }
 
@@ -26,10 +37,28 @@ body {
   }
 
 	.col-lg-4 p {
-		margin-left: 10px;
-    margin-right: 10px;
+		margin-left: .5em;
+    margin-right: .5em;
 
   }
+}
+
+.contact,
+.inner-content {
+	margin-top: 5em;
+
+	iframe {
+		margin: 1em 0;
+	}
+
+	.form-contact {
+		margin-top: 1em;
+
+		.form-group {
+			height: 2em;
+			margin-bottom: .6em;
+		}
+	}
 }
 
 .featurette-divider {

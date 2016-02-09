@@ -1,6 +1,6 @@
 
-<section class="content-fluid inside-section" >
-	<article class="col-sm-10 col-sm-offset-1 contact-content">
+<section class="container contact">
+	<div class="col-md-12">
 		<?php
 			if(isset($message_error) && $message_error){
 				echo '<div class="alert alert-warning alert-dismissible" role="alert">';
@@ -19,44 +19,64 @@
 		<div class="row">
 			<div class="col-sm-5">
 				<h2>Contatos</h2>
-				<address>
-					<p>
-						Rua da Conceição, 188, Sala 704<br/>
-						Niterói Shopping<br/>
-						Centro - Niterói - RJ<br/>
-					  <abbr title="Telefone"><strong>Telefone:</strong></abbr> 21 99983-2421
-					</p>
-				</address>
-				<div id="map" class="col-sm-12 map-contact"></div>
+				<?php
+					if (count($configuracoes) > 0 ) {
+						foreach ($configuracoes as $configuracao) {
+							echo '<address>';
+							echo '<p>'.$configuracao->endereco.'<br/>';
+							echo $configuracao->bairro.'<br/>';
+							echo $configuracao->cidade." - ".$configuracao->estado.'</p>';
+							echo '<p>'.$configuracao->telefone.'<br/>';
+							echo $configuracao->celular.'</p>';
+							echo '<p><a href="mailto:'.$configuracao->email.'">'.$configuracao->email.'</a></p>';
+							echo '</address>';
+							echo $configuracao->maps;
+						}
+					}
+				?>
 			</div>
 			<div class="col-sm-6 col-sm-offset-1">
-				<h2>Fale Conosco</h2>
-				<p>Preencha o formulário abaixo para entrar em contato conosco. Suas opiniões e sugestões são muito importantes para nós. Assim que possível retornaremos sua mensagem.</p>
-				<div class="form-contact">
+				<div class="row">
+					<div class="col-sm-12">
+						<h2>Fale Conosco</h2>
+						<p>Preencha o formulário abaixo para entrar em contato conosco. Suas opiniões e sugestões são muito importantes para nós. Assim que possível retornaremos sua mensagem.</p>
+					</div>
+				</div>
+				<div class="row">
 					<?php
-            $attributes = array('class' => 'form-signup');
-            echo form_open(base_url().'enviar', $attributes);
+	          $attributes = array('class' => 'form-contact', 'role' => 'form');
+	          echo form_open(base_url().'enviar', $attributes);
 	        ?>
-					<div class="row">
+					<div class="form-group">
 						<div class="col-sm-6">
-							<?php echo form_input('nome', set_value('nome'), 'placeholder="Nome" class="field"'); ?>
-						</div>
-						<div class="col-sm-6">
-							<?php echo form_input('email', set_value('email'), 'placeholder="E-mail" class="field"'); ?>
+							<?php echo form_input('nome', set_value('nome'), 'placeholder="Nome" class="form-control"'); ?>
 						</div>
 						<div class="col-sm-6">
-							<?php echo form_input('telefone', set_value('telefone'), 'placeholder="Telefone" class="field"'); ?>
-						</div>
-						<div class="col-sm-6">
-							<?php echo form_input('endereco', set_value('endereco'), 'placeholder="Endereço" class="field"'); ?>
-						</div>
-						<div class="col-sm-12">
-							<?php echo form_textarea('mensagem', set_value('mensage'), 'placeholder="Nome" class="text"'); ?>
-						</div>
-						<div class="col-sm-12">
-							<input type="submit" value="enviar" class="btn-submit"/>
+							<?php echo form_input('email', set_value('email'), 'placeholder="E-mail" class="form-control"'); ?>
 						</div>
 					</div>
+					<div class="form-group">
+						<div class="col-sm-6">
+							<?php echo form_input('telefone', set_value('telefone'), 'placeholder="Telefone" class="form-control"'); ?>
+						</div>
+						<div class="col-sm-6">
+							<?php echo form_input('endereco', set_value('endereco'), 'placeholder="Endereço" class="form-control"'); ?>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<?php echo form_textarea('mensagem', set_value('mensage'), 'placeholder="Digite sua mensagem" class="form-control"'); ?>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<input type="submit" value="Enviar" class="btn btn-default"/>
+							<input type="reset" value="Limpar" class="btn btn-default"/>
+						</div>
+					</div>
+					<?php
+	          echo form_close();
+	        ?>
 				</div>
 			</div>
 		</div>

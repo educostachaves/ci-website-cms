@@ -76,7 +76,7 @@ class Galerias extends CI_Controller {
           $data_insert = array(
             'titulo' => $this->input->post('titulo'),
             'imagem' => $file_data['file_name'],
-            'url' => 'url' => strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $this->input->post('titulo'))),
+            'url' => strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $this->input->post('titulo'))),
             'descricao' => $this->input->post('descricao')
           );
           if($query = $this->Galerias_model->create($data_insert)) {
@@ -115,7 +115,7 @@ class Galerias extends CI_Controller {
             $data_update = array(
               'titulo' => $this->input->post('titulo'),
               'imagem' => $file_data['file_name'],
-              'url' => 'url' => strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $this->input->post('titulo'))),
+              'url' => strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $this->input->post('titulo'))),
               'descricao' => $this->input->post('descricao')
             );
           }
