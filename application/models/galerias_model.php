@@ -55,6 +55,15 @@ class Galerias_model extends CI_Model {
 		}
 	}
 
+	function get_galeria_by_url($url)	{
+		$this->db->select('galeria.url, galeria_imagem.*');
+		$this->db->from('galeria');
+		$this->db->join('galeria_imagem', 'galeria_imagem.galeria = galeria.id');
+		$this->db->where('galeria.url', $url);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	function get_galeria_imagem_by_id($id)	{
 		$this->db->select('url');
 		$this->db->where('id', $id);

@@ -6,9 +6,12 @@ class Site extends CI_Controller {
   public function __construct() {
     parent::__construct();
     $this->load->model('Novidades_model');
+    $this->load->model('Paginas_model');
+    $this->load->model('Galerias_model');
   }
 
   public function index() {
+    $data['carousel_home'] = $this->Galerias_model->get_galeria_by_url('carousel-home');
     $data['main_content'] = 'site/index';
     $this->load->view('includes/site_template', $data);
   }

@@ -93,7 +93,7 @@ class Paginas extends CI_Controller {
         }
       }
 		}
-    $data["lista_linguagens"] = $this->Linguagens_model->get_all_linguagens();
+    
     $data['main_content'] = 'admin/paginas/create';
     $this->load->view('includes/admin_template', $data);
   }
