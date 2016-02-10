@@ -16,17 +16,38 @@
   </ol>
   <div class="carousel-inner" role="listbox">
   <?php
+  $cta_saiba_mais = array('br' => 'Saiba Mais', 'en' => 'More', 'es' => 'Saiba Mas');
 	if (count($carousel_home) > 0 ) {
     $i = 0;
-    //$len = count($carousel_home);
 		foreach($carousel_home as $slide) {
       if ($i == 0) {
         echo '<div class="item active">';
       } else {
         echo '<div class="item">';
       }
-      echo '<img src="'.base_url().'uploads/'.$slide->url.'" />';
-      echo '</div>';
+      echo '<img src="'.base_url().'uploads/'.$slide->imagem.'" />';
+      echo '<div class="container"><div class="carousel-caption">';
+      if(!empty($language)){
+        switch ($language) {
+          case 'br':
+            echo '<h1>'.$slide->titulo_br.'</h1>';
+            echo '<p>'.$slide->descricao_br.'</p>';
+            break;
+          case 'en':
+            echo '<h1>'.$slide->titulo_en.'</h1>';
+            echo '<p>'.$slide->descricao_en.'</p>';
+            break;
+          case 'es':
+            echo '<h1>'.$slide->titulo_es.'</h1>';
+            echo '<p>'.$slide->descricao_es.'</p>';
+            break;
+        }
+      } else {
+        echo '<h1>'.$slide->titulo_br.'</h1>';
+        echo '<p>'.$slide->descricao_br.'</p>';
+      }
+      echo '<p><a class="btn btn-lg btn-primary" href="#" role="button">'.$cta_saiba_mais[(empty($language)) ? 'br' : $language].'</a></p>';
+      echo '</div></div></div>';
       $i++;
     }
   }

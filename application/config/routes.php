@@ -82,6 +82,11 @@ $route['admin/paginas/novo'] = 'paginas/create';
 $route['admin/paginas/editar/(:num)'] = 'paginas/update/$1';
 $route['admin/paginas/excluir/(:num)'] = 'paginas/delete/$1';
 
+$route['admin/slides'] = 'slide/index';
+$route['admin/slides/novo'] = 'slide/create';
+$route['admin/slides/editar/(:num)'] = 'slide/update/$1';
+$route['admin/slides/excluir/(:num)'] = 'slide/delete/$1';
+
 $route['home'] = 'site/index';
 $route['change_language'] = 'site/change_language';
 $route['novidades'] = 'site/novidades';

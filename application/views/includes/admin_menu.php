@@ -82,6 +82,20 @@
         </li>
         <li>
           <a href="#">
+            <i class="fa fa-camera-retro fa-fw"></i> Slides
+            <span class="fa arrow"></span>
+          </a>
+          <ul class="nav nav-second-level">
+            <li>
+              <a href="<?php echo base_url(); ?>admin/slides/">Listar Slides</a>
+            </li>
+            <li>
+              <a href="<?php echo base_url(); ?>admin/slides/novo">Cadastrar Slide</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
             <i class="fa fa-picture-o fa-fw"></i> Galerias
             <span class="fa arrow"></span>
           </a>

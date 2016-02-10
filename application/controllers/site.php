@@ -9,6 +9,7 @@ class Site extends CI_Controller {
     $this->load->model('Configuracoes_model');
     $this->load->model('Paginas_model');
     $this->load->model('Galerias_model');
+    $this->load->model('Slide_model');
 
     $data_social = array();
     foreach ($this->Configuracoes_model->get_social_links() as $social) {
@@ -24,7 +25,7 @@ class Site extends CI_Controller {
   }
 
   public function index() {
-    $data['carousel_home'] = $this->Galerias_model->get_galeria_by_url('carousel-home');
+    $data['carousel_home'] = $this->Slide_model->get_slides();
     $data['main_content'] = 'site/index';
     $data['contents'] = $this->Paginas_model->get_pagina_by_url('home');
     foreach ($data['contents'] as $content) {
