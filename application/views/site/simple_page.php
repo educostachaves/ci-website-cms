@@ -7,22 +7,24 @@
   	?>
     <div class="col-md-7">
 			<h2><?php
-				switch ($language) {
-					case 'br':
-						echo $content->titulo_br;
-						break;
-					case 'en':
-						echo $content->titulo_en;
-						break;
-					case 'es':
-						echo $content->titulo_es;
-						break;
-					default:
-						echo $content->titulo_br;
-						break;
-				}
-			?></h2>
+      if(!empty($language)){
+        switch ($language) {
+          case 'br':
+            echo $content->titulo_br;
+            break;
+          case 'en':
+            echo $content->titulo_en;
+            break;
+          case 'es':
+            echo $content->titulo_es;
+            break;
+        }
+      } else {
+        echo $content->titulo_br;
+      }
+      ?></h2>
       <?php
+      if(!empty($language)){
         switch ($language) {
           case 'br':
             echo $content->texto_br;
@@ -33,10 +35,10 @@
           case 'es':
             echo $content->texto_es;
             break;
-          default:
-            echo $content->texto_br;
-            break;
         }
+      } else {
+        echo $content->texto_br;
+      }
       ?>
     </div>
     <div class="col-md-5">

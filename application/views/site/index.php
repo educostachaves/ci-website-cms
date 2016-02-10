@@ -12,6 +12,7 @@
   	?>
       <div class="col-md-7">
         <?php
+        if(!empty($language)){
           switch ($language) {
             case 'br':
               echo $content->texto_br;
@@ -22,10 +23,10 @@
             case 'es':
               echo $content->texto_es;
               break;
-            default:
-              echo $content->texto_br;
-              break;
           }
+        } else {
+          echo $content->texto_br;
+        }
         ?>
       </div>
       <div class="col-md-5">

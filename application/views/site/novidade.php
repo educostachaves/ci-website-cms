@@ -6,24 +6,26 @@
   	?>
     <div class="col-md-7">
 			<h2><?php
-				switch ($language) {
-					case 'br':
-						echo $novidade->titulo_br;
-						break;
-					case 'en':
-						echo $novidade->titulo_en;
-						break;
-					case 'es':
-						echo $novidade->titulo_es;
-						break;
-					default:
-						echo $novidade->titulo_br;
-						break;
-				}
-			?></h2>
+      if(!empty($language)){
+        switch ($language) {
+          case 'br':
+            echo $novidade->titulo_br;
+            break;
+          case 'en':
+            echo $novidade->titulo_en;
+            break;
+          case 'es':
+            echo $novidade->titulo_es;
+            break;
+        }
+      } else {
+        echo $novidade->titulo_br;
+      }
+      ?></h2>
 			<p><?php echo $novidade->autor; ?> - Data: <?php echo date("d/m/Y", strtotime($novidade->data)); ?></p>
 			<hr/>
-			<?php
+      <?php
+      if(!empty($language)){
         switch ($language) {
           case 'br':
             echo $novidade->texto_br;
@@ -34,10 +36,10 @@
           case 'es':
             echo $novidade->texto_es;
             break;
-          default:
-            echo $novidade->texto_br;
-            break;
         }
+      } else {
+        echo $novidade->texto_br;
+      }
       ?>
     </div>
     <div class="col-md-5">

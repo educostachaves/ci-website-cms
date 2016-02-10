@@ -18,7 +18,10 @@
 		?>
 		<div class="row">
 			<div class="col-sm-5">
-				<h2>Contatos</h2>
+				<?php
+					$title_contatos = array('br' => 'Contatos', 'en' => 'Contacts', 'es' => 'Contactos');
+					echo '<h2>'.$title_contatos[(empty($language)) ? 'br' : $language].'</h2>';
+				?>
 				<?php
 					if (count($configuracoes) > 0 ) {
 						foreach ($configuracoes as $configuracao) {
@@ -38,8 +41,17 @@
 			<div class="col-sm-6 col-sm-offset-1">
 				<div class="row">
 					<div class="col-sm-12">
-						<h2>Fale Conosco</h2>
-						<p>Preencha o formulário abaixo para entrar em contato conosco. Suas opiniões e sugestões são muito importantes para nós. Assim que possível retornaremos sua mensagem.</p>
+						<?php
+							$title_fale_conosco = array('br' => 'Fale Conosco', 'en' => 'Talk with us', 'es' => 'Fale Conosco');
+							echo '<h2>'.$title_fale_conosco[(empty($language)) ? 'br' : $language].'</h2>';
+						?>
+						<?php
+							$text_fale_conosco = array(
+								'br' => 'Preencha o formulário abaixo para entrar em contato conosco. Suas opiniões e sugestões são muito importantes para nós. Assim que possível retornaremos sua mensagem.',
+								'en' => 'Complete the form below to contact us. Your opinions and suggestions are very important to us. As soon as possible we will return your message.',
+								'es' => 'Complete el siguiente formulario para ponerse en contacto con nosotros. Sus opiniones y sugerencias son muy importantes para nosotros. Tan pronto como sea posible vamos a devolver el mensaje.');
+							echo '<p>'.$text_fale_conosco[(empty($language)) ? 'br' : $language].'</p>';
+						?>
 					</div>
 				</div>
 				<div class="row">

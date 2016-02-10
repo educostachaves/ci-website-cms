@@ -18,21 +18,22 @@
 	    </div>
 	    <div class="col-md-8">
 				<h3><?php
-					switch ($language) {
-						case 'br':
-							echo $novidade->titulo_br;
-							break;
-						case 'en':
-							echo $novidade->titulo_en;
-							break;
-						case 'es':
-							echo $novidade->titulo_es;
-							break;
-						default:
-							echo $novidade->titulo_br;
-							break;
-					}
-				?></h3>
+        if(!empty($language)){
+          switch ($language) {
+            case 'br':
+              echo $novidade->titulo_br;
+              break;
+            case 'en':
+              echo $novidade->titulo_en;
+              break;
+            case 'es':
+              echo $novidade->titulo_es;
+              break;
+          }
+        } else {
+          echo $novidade->titulo_br;
+        }
+        ?></h3>
 				<p><?php echo $novidade->autor; ?> - Data: <?php echo date("d/m/Y", strtotime($novidade->data)); ?></p>
 	    </div>
 			<hr/>
