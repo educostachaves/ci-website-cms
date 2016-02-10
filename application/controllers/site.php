@@ -19,7 +19,8 @@ class Site extends CI_Controller {
         'facebook_link' => $social->facebook,
         'twitter_link' => $social->twitter,
         'instagram_link' => $social->instagram,
-        'linkedin_link' => $social->linkedin
+        'linkedin_link' => $social->linkedin,
+        'email_pagina' => $social->email,
       );
     }
     $this->session->set_userdata($data_website);
@@ -64,6 +65,24 @@ class Site extends CI_Controller {
     $this->load->view('includes/site_template', $data);
   }
 
+  public function galerias() {
+    $data['main_content'] = 'site/galerias';
+    $data["galerias"] = $this->Galerias_model->get_galerias_site();
+    $this->load->view('includes/site_template', $data);
+  }
+
+  public function galeria_url() {
+    $url = $this->uri->segment(3);
+    $data['main_content'] = 'site/galeria';
+    $data["galerias"] = $this->Galerias_model->get_galeria_by_url($url);
+    foreach ($data["galerias"] as $galeria) {
+      $data['meta']['title'] = $galeria->titulo_br;
+      $data['meta']['description'] = $galeria->descricao_br;
+      $data['meta']['keywords'] = $galeria->palavras_chave;
+    }
+    $this->load->view('includes/site_template', $data);
+  }
+
   public function sobre() {
     $data['contents'] = $this->Paginas_model->get_pagina_by_url('sobre');
     foreach ($data["contents"] as $content) {
@@ -77,6 +96,9 @@ class Site extends CI_Controller {
 
   public function contato() {
     $data['configuracoes'] = $this->Configuracoes_model->get_social_links();
+    $data['meta']['title'] = 'Contato';
+    $data['meta']['description'] = 'Descrição de Contatos';
+    $data['meta']['keywords'] = 'contatos,contatos,contatos';
     $data['main_content'] = 'site/contato';
     $this->load->view('includes/site_template', $data);
   }
@@ -114,7 +136,7 @@ class Site extends CI_Controller {
       $titulo = 'Contato do Site';
       $mensagem = 'Contato de telefone: '.$telefone.'<br/>Contato de endereco: '.$endereco.'<br/>Mensagem: '.$this->input->post('mensagem');
 
-      $to_email = 'andredourado@ig.com.br';
+      $to_email = $data_social['email_pagina'];
 
       $config['protocol'] = 'smtp';
       $config['smtp_host'] = 'ssl://smtp.gmail.com';

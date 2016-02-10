@@ -37,7 +37,7 @@
             <thead>
               <tr>
                 <th class="col-md-4">Thumb</th>
-                <th class="col-md-4">URL</th>
+                <th class="col-md-4">URL Imagem</th>
                 <th class="col-md-2">Opções</th>
               </tr>
             </thead>
@@ -47,7 +47,7 @@
     						foreach($imagens as $imagem) {
     					?>
               <tr>
-                <td><img src='<?php echo base_url()."uploads/".$imagem->url; ?>' class='img-responsive' width="100"/></td>
+                <td><img src='<?php echo base_url()."uploads/".$imagem->url_imagem; ?>' class='img-responsive' width="100"/></td>
                 <td><?php echo $imagem->url; ?></td>
                 <td class="center">
                   <a href="<?php echo base_url();?>admin/galerias/imagens/excluir/<?php echo $imagem->id; ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Excluir">

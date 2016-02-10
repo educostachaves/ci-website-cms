@@ -72,6 +72,7 @@
               $link_nav_sobre = array('br' => 'Sobre', 'en' => 'About', 'es' => 'Sobre');
               $link_nav_novidades = array('br' => 'Novidades', 'en' => 'News', 'es' => 'Novidades');
               $link_nav_contato = array('br' => 'Contato', 'en' => 'Contact', 'es' => 'Contacto');
+              $link_nav_galerias = array('br' => 'Galerias', 'en' => 'Galleries', 'es' => 'Galerías');
 
               if ( $this->uri->uri_string() == '' ) {
                 echo '<li class="active">'.anchor(base_url(), $link_nav_inicial[(empty($language)) ? 'br' : $language]).'</li>';
@@ -91,6 +92,13 @@
                 echo '<li class="active">'.anchor(base_url().'novidades', $link_nav_novidades[(empty($language)) ? 'br' : $language]).'</li>';
               } else {
                 echo '<li>'.anchor(base_url().'novidades', $link_nav_novidades[(empty($language)) ? 'br' : $language]).'</li>';
+              }
+            ?>
+            <?php
+              if ( $this->uri->uri_string() == 'galerias' ) {
+                echo '<li class="active">'.anchor(base_url().'galerias', $link_nav_galerias[(empty($language)) ? 'br' : $language]).'</li>';
+              } else {
+                echo '<li>'.anchor(base_url().'galerias', $link_nav_galerias[(empty($language)) ? 'br' : $language]).'</li>';
               }
             ?>
             <?php

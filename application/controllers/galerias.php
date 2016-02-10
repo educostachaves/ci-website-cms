@@ -57,8 +57,8 @@ class Galerias extends CI_Controller {
 
   public function create() {
     if ($this->input->server('REQUEST_METHOD') === 'POST') {
-			$this->form_validation->set_rules('titulo', 'Título', 'trim|required|min_length[4]|max_length[40]');
-      $this->form_validation->set_rules('descricao', 'Descrição', 'trim|required|min_length[4]|max_length[300]');
+			$this->form_validation->set_rules('titulo_br', 'Título', 'trim|required|min_length[4]|max_length[40]');
+      $this->form_validation->set_rules('descricao_br', 'Descrição', 'trim|required|min_length[4]|max_length[300]');
 			$this->form_validation->set_error_delimiters('<span>', '</span>');
 			if($this->form_validation->run() != FALSE) {
         $config = array(
@@ -74,10 +74,15 @@ class Galerias extends CI_Controller {
         } else {
           $file_data = $this->upload->data();
           $data_insert = array(
-            'titulo' => $this->input->post('titulo'),
+            'titulo_br' => $this->input->post('titulo_br'),
+            'titulo_en' => $this->input->post('titulo_en'),
+            'titulo_es' => $this->input->post('titulo_es'),
             'imagem' => $file_data['file_name'],
-            'url' => strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $this->input->post('titulo'))),
-            'descricao' => $this->input->post('descricao')
+            'url' => strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $this->input->post('titulo_br'))),
+            'descricao_br' => $this->input->post('descricao_br'),
+            'descricao_en' => $this->input->post('descricao_en'),
+            'descricao_es' => $this->input->post('descricao_es'),
+            'palavras_chave' => $this->input->post('palavras_chave')
           );
           if($query = $this->Galerias_model->create($data_insert)) {
   					$data['message_error'] = "Cadastro realizado com sucesso";
@@ -94,8 +99,8 @@ class Galerias extends CI_Controller {
   public function update() {
     $id = $this->uri->segment(4);
     if ($this->input->server('REQUEST_METHOD') === 'POST') {
-      $this->form_validation->set_rules('titulo', 'Título', 'trim|required|min_length[4]|max_length[40]');
-      $this->form_validation->set_rules('descricao', 'Descrição', 'trim|required|min_length[4]|max_length[300]');
+      $this->form_validation->set_rules('titulo_br', 'Título', 'trim|required|min_length[4]|max_length[40]');
+      $this->form_validation->set_rules('descricao_br', 'Descrição', 'trim|required|min_length[4]|max_length[300]');
 			$this->form_validation->set_error_delimiters('<span>', '</span>');
 			if($this->form_validation->run() != FALSE) {
         if (!empty($_FILES["imagem"]['name'])) {
@@ -113,17 +118,27 @@ class Galerias extends CI_Controller {
             unlink("./uploads/".$this->Galerias_model->get_imagem_by_id($id));
             $file_data = $this->upload->data();
             $data_update = array(
-              'titulo' => $this->input->post('titulo'),
+              'titulo_br' => $this->input->post('titulo_br'),
+              'titulo_en' => $this->input->post('titulo_en'),
+              'titulo_es' => $this->input->post('titulo_es'),
               'imagem' => $file_data['file_name'],
-              'url' => strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $this->input->post('titulo'))),
-              'descricao' => $this->input->post('descricao')
+              'url' => strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $this->input->post('titulo_br'))),
+              'descricao_br' => $this->input->post('descricao_br'),
+              'descricao_en' => $this->input->post('descricao_en'),
+              'descricao_es' => $this->input->post('descricao_es'),
+              'palavras_chave' => $this->input->post('palavras_chave')
             );
           }
         } else {
           $data_update = array(
-            'titulo' => $this->input->post('titulo'),
-            'descricao' => $this->input->post('descricao'),
-            'data' => date("Y-m-d H:i:s")
+            'titulo_br' => $this->input->post('titulo_br'),
+            'titulo_en' => $this->input->post('titulo_en'),
+            'titulo_es' => $this->input->post('titulo_es'),
+            'url' => strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $this->input->post('titulo_br'))),
+            'descricao_br' => $this->input->post('descricao_br'),
+            'descricao_en' => $this->input->post('descricao_en'),
+            'descricao_es' => $this->input->post('descricao_es'),
+            'palavras_chave' => $this->input->post('palavras_chave')
           );
         }
 				if($query = $this->Galerias_model->update($id,$data_update)) {
@@ -198,7 +213,7 @@ class Galerias extends CI_Controller {
           $data = $this->upload->data();
           $data_insert = array(
             'galeria' => $id,
-            'url' => $data['file_name']
+            'url_imagem' => $data['file_name']
           );
 
           if($query = $this->Galerias_model->insert_imagens($data_insert)) {

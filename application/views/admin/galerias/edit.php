@@ -23,13 +23,37 @@
         echo '</div>';
       }
     ?>
+    <hr/>
     <div class="form-group">
-      <label>Título</label>
-      <?php echo form_input('titulo', $galeria->titulo, 'class="form-control" placeholder="Digite o Título" maxlength="100"'); ?>
+      <label>Título Português</label>
+      <?php echo form_input('titulo_br', $galeria->titulo_br, 'class="form-control" placeholder="Digite o Título" maxlength="30"'); ?>
     </div>
     <div class="form-group">
-      <label>Descrição</label>
-      <?php echo form_textarea('descricao', $galeria->descricao, 'class="form-control" maxlength="100" rows="2"'); ?>
+      <label>Texto Português</label>
+      <?php echo form_textarea('descricao_br', $galeria->descricao_br, 'class="form-control" maxlength="140"'); ?>
+    </div>
+    <hr/>
+    <div class="form-group">
+      <label>Título Inglês</label>
+      <?php echo form_input('titulo_en', $galeria->titulo_en, 'class="form-control" placeholder="Digite o Título" maxlength="30"'); ?>
+    </div>
+    <div class="form-group">
+      <label>Texto Inglês</label>
+      <?php echo form_textarea('descricao_en', $galeria->descricao_en, 'class="form-control" maxlength="140"'); ?>
+    </div>
+    <hr/>
+    <div class="form-group">
+      <label>Título Espanhol</label>
+      <?php echo form_input('titulo_es', $galeria->titulo_es, 'class="form-control" placeholder="Digite o Título" maxlength="30"'); ?>
+    </div>
+    <div class="form-group">
+      <label>Texto Espanhol</label>
+      <?php echo form_textarea('descricao_es', $galeria->descricao_es, 'class="form-control" maxlength="140"'); ?>
+    </div>
+    <hr/>
+    <div class="form-group">
+      <label>Palavras Chave SEO</label>
+      <?php echo form_input('palavras_chave', $galeria->palavras_chave, 'class="form-control" placeholder="Digite as palavras chave separadas por vírgula" maxlength="140"'); ?>
     </div>
     <div class="form-group">
       <div class="row">

@@ -46,17 +46,17 @@ class Galerias_model extends CI_Model {
 	}
 
 	function get_galeria_titulo_by_id($id)	{
-		$this->db->select('titulo');
+		$this->db->select('titulo_br');
 		$this->db->where('id', $id);
 		$query = $this->db->get('galeria');
 		if ($query->num_rows() > 0) {
 		   $row = $query->row();
-		   return $row->titulo;
+		   return $row->titulo_br;
 		}
 	}
 
 	function get_galeria_by_url($url)	{
-		$this->db->select('galeria.url, galeria_imagem.*');
+		$this->db->select('galeria.*, galeria_imagem.*');
 		$this->db->from('galeria');
 		$this->db->join('galeria_imagem', 'galeria_imagem.galeria = galeria.id');
 		$this->db->where('galeria.url', $url);
@@ -65,12 +65,12 @@ class Galerias_model extends CI_Model {
 	}
 
 	function get_galeria_imagem_by_id($id)	{
-		$this->db->select('url');
+		$this->db->select('url_imagem');
 		$this->db->where('id', $id);
 		$query = $this->db->get('galeria_imagem');
 		if ($query->num_rows() > 0) {
 		   $row = $query->row();
-		   return $row->url;
+		   return $row->url_imagem;
 		}
 	}
 
