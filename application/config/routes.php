@@ -87,6 +87,11 @@ $route['admin/slides/novo'] = 'slide/create';
 $route['admin/slides/editar/(:num)'] = 'slide/update/$1';
 $route['admin/slides/excluir/(:num)'] = 'slide/delete/$1';
 
+$route['admin/beneficios'] = 'beneficios/index';
+$route['admin/beneficios/novo'] = 'beneficios/create';
+$route['admin/beneficios/editar/(:num)'] = 'beneficios/update/$1';
+$route['admin/beneficios/excluir/(:num)'] = 'beneficios/delete/$1';
+
 $route['home'] = 'site/index';
 $route['change_language'] = 'site/change_language';
 $route['novidades'] = 'site/novidades';

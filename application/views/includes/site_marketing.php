@@ -1,20 +1,32 @@
 <div class="row">
-  <div class="box col-lg-4">
-    <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-    <h2>Heading</h2>
-    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-  </div>
-  <div class="box col-lg-4">
-    <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-    <h2>Heading</h2>
-    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-  </div>
-  <div class="box col-lg-4">
-    <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-    <h2>Heading</h2>
-    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-  </div>
+  <?php
+  $cta_mais_detalhes = array('br' => 'Mais Detalhes', 'en' => 'More Details', 'es' => 'Más detalles');
+	if (count($beneficios) > 0 ) {
+		foreach($beneficios as $beneficio) {
+      echo '<div class="box col-lg-4">';
+      echo '<img class="img-circle" width="140" height="140" src="'.base_url().'uploads/'.$beneficio->imagem.'" />';
+      if(!empty($language)){
+        switch ($language) {
+          case 'br':
+            echo '<h2>'.$beneficio->titulo_br.'</h2>';
+            echo '<p>'.$beneficio->descricao_br.'</p>';
+            break;
+          case 'en':
+            echo '<h2>'.$beneficio->titulo_en.'</h2>';
+            echo '<p>'.$beneficio->descricao_en.'</p>';
+            break;
+          case 'es':
+            echo '<h2>'.$beneficio->titulo_es.'</h2>';
+            echo '<p>'.$beneficio->descricao_es.'</p>';
+            break;
+        }
+      } else {
+        echo '<h2>'.$beneficio->titulo_br.'</h2>';
+        echo '<p>'.$beneficio->descricao_br.'</p>';
+      }
+      echo '<p><a class="btn btn-default" href="'.base_url().$beneficio->link.'" role="button">'.$cta_mais_detalhes[(empty($language)) ? 'br' : $language].'</a></p>';
+      echo '</div>';
+    }
+  }
+	?>
 </div>

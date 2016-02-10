@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Slide extends CI_Controller {
+class Beneficios extends CI_Controller {
 
   public function __construct() {
     parent::__construct();
-    $this->load->model('Slide_model');
+    $this->load->model('Beneficios_model');
     $this->load->model('Paginas_model');
 
     if(!$this->session->userdata('is_logged_in')){
@@ -14,8 +14,8 @@ class Slide extends CI_Controller {
   }
 
   public function index() {
-		$data["slides"] = $this->Slide_model->get_slides();
-    $data['main_content'] = 'admin/slides/list';
+		$data["beneficios"] = $this->Beneficios_model->get_beneficios();
+    $data['main_content'] = 'admin/beneficios/list';
     $this->load->view('includes/admin_template', $data);
   }
 
@@ -47,7 +47,7 @@ class Slide extends CI_Controller {
             'descricao_en' => $this->input->post('descricao_en'),
             'descricao_es' => $this->input->post('descricao_es'),
           );
-          if($query = $this->Slide_model->create($data_insert)) {
+          if($query = $this->Beneficios_model->create($data_insert)) {
   					$data['message_error'] = "Cadastro realizado com sucesso";
   				} else {
   					$data['message_error'] = "Houve um erro ao cadastrar. Por favor confira os dados cadastrados e tente novamente";
@@ -56,7 +56,7 @@ class Slide extends CI_Controller {
       }
 		}
     $data['lista_paginas'] = $this->Paginas_model->get_paginas_site();
-    $data['main_content'] = 'admin/slides/create';
+    $data['main_content'] = 'admin/beneficios/create';
     $this->load->view('includes/admin_template', $data);
   }
 
@@ -81,7 +81,7 @@ class Slide extends CI_Controller {
           if (!$this->upload->do_upload('imagem')) {
             $data['message_error'] = $this->upload->display_errors();
           } else {
-            unlink("./uploads/".$this->Slide_model->get_imagem_by_id($id));
+            unlink("./uploads/".$this->Beneficios_model->get_imagem_by_id($id));
             $file_data = $this->upload->data();
             $data_update = array(
               'titulo_br' => $this->input->post('titulo_br'),
@@ -105,7 +105,7 @@ class Slide extends CI_Controller {
             'descricao_es' => $this->input->post('descricao_es'),
           );
         }
-				if($query = $this->Slide_model->update($id,$data_update)) {
+				if($query = $this->Beneficios_model->update($id,$data_update)) {
 					$data['message_error'] = "Alteração realizada com sucesso";
 				} else {
 					$data['message_error'] = "Houve um erro ao Alterar. Por favor confira os dados cadastrados e tente novamente";
@@ -113,21 +113,21 @@ class Slide extends CI_Controller {
 			}
 		}
     $data['lista_paginas'] = $this->Paginas_model->get_paginas_site();
-    $data['slides'] = $this->Slide_model->get_slide_by_id($id);
-    $data['main_content'] = 'admin/slides/edit';
+    $data['beneficios'] = $this->Beneficios_model->get_beneficio_by_id($id);
+    $data['main_content'] = 'admin/beneficios/edit';
     $this->load->view('includes/admin_template', $data);
   }
 
   public function delete() {
 		$id = $this->uri->segment(4);
-    unlink("./uploads/".$this->Slide_model->get_slide_image_by_id($id));
-		if ($this->Slide_model->delete($id)) {
+    unlink("./uploads/".$this->Beneficios_model->get_beneficio_image_by_id($id));
+		if ($this->Beneficios_model->delete($id)) {
 			$data['message_error'] = "Exclusão realizada com sucesso";
-			$data['main_content'] = 'admin/slides/list';
+			$data['main_content'] = 'admin/beneficios/list';
 			$this->load->view('includes/admin_template', $data);
 		} else {
 			$data['message_error'] = "Houve um erro ao excluir";
-			$data['main_content'] = 'admin/slides/list';
+			$data['main_content'] = 'admin/beneficios/list';
 			$this->load->view('includes/admin_template', $data);
 		}
 	}

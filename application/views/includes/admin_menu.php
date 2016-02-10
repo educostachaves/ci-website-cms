@@ -82,6 +82,20 @@
         </li>
         <li>
           <a href="#">
+            <i class="fa fa-gift fa-fw"></i> Benefícios
+            <span class="fa arrow"></span>
+          </a>
+          <ul class="nav nav-second-level">
+            <li>
+              <a href="<?php echo base_url(); ?>admin/beneficios/">Listar Benefícios</a>
+            </li>
+            <li>
+              <a href="<?php echo base_url(); ?>admin/beneficios/novo">Cadastrar Benefícios</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
             <i class="fa fa-camera-retro fa-fw"></i> Slides
             <span class="fa arrow"></span>
           </a>

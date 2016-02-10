@@ -46,7 +46,7 @@
         echo '<h1>'.$slide->titulo_br.'</h1>';
         echo '<p>'.$slide->descricao_br.'</p>';
       }
-      echo '<p><a class="btn btn-lg btn-primary" href="#" role="button">'.$cta_saiba_mais[(empty($language)) ? 'br' : $language].'</a></p>';
+      echo '<p><a class="btn btn-lg btn-primary" href="'.base_url().$slide->link.'" role="button">'.$cta_saiba_mais[(empty($language)) ? 'br' : $language].'</a></p>';
       echo '</div></div></div>';
       $i++;
     }
